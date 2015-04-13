@@ -1,14 +1,26 @@
 class Rute {
-    char verdi;
+    int verdi;
     Boks boks;
     Kolonne kolonne;
     Rad rad;
 
     Rute(char c){
-        this.verdi = c;
+	setVerdi(c);
     }
-    public String toString(){
-        return this.verdi+"";
+
+    public void setVerdi(char c) {
+	if (c < '1') this.verdi=0;
+	else if (c < ':') this.verdi = (int)c-'0'; // ':' folger '9'i ascii tabellen
+	else this.verdi = (int)( c-'A'+10);
+    }
+
+    public char getCharVerdi() {
+	if (this.verdi == 0) return '.';
+	else if (this.verdi < 10) return (char)(this.verdi+'0'); // 48 = '0'
+	else return (char)(this.verdi-10+'A');
+    }
+    public String toString() {
+        return getCharVerdi()+"";
     }
 
     public boolean setBoks(Boks b) {
