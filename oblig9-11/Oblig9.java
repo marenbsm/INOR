@@ -14,15 +14,6 @@ class Oblig9 {
 	if (sodoku.tom() ) return;
 	sodoku.spillebrett.skrivUt();
     }
-    /*
-    public void delInnRuter() {
-	//rader
-	for
-	    //kolonner
-	    //bokser
-
-	    }
-    */
     private Brett lesFil(String s){
 	Rute[][] brett; // [rad] [kolonne]
 	Scanner sc;
