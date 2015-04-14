@@ -28,7 +28,7 @@ class Brett {
 	return kolonnerIBoks;
     }
     public int boksNummer(int rad, int kolonne) {
-	return rad-(rad%this.raderIBoks)+(kolonne%kolonnerIBoks);
+	return rad-(rad%this.raderIBoks)+(kolonne%this.kolonnerIBoks);
     }
 
     public void delInnRuter() {
