@@ -27,6 +27,9 @@ class Brett {
     public int getKolonnerIBoks() {
 	return kolonnerIBoks;
     }
+    public int boksNummer(int rad, int kolonne) {
+	return rad-(rad%this.raderIBoks)+(kolonne%kolonnerIBoks);
+    }
 
     public void delInnRuter() {
 	//  brett[rader][kolonner]
@@ -37,11 +40,17 @@ class Brett {
 	for (int i = 0; i < this.dimensjon(); i++ ) {
 	    kolonner[i] = new Kolonne();
 	}
+	
+	for (int i= 0; i < this.dimensjon(); i++) {
+	    bokser[i] = new Boks();
+	}
+	
 	for (int r = 0; r < this.dimensjon(); r++ ) {
 	    rader[r] = new Rad();
 	    for (int k = 0; k < this.dimensjon(); k++ ) {
 		this.brett[r][k].setRad(rader[r]);
 		this.brett[r][k].setKolonne(kolonner[k]);
+		this.brett[r][k].setBoks(bokser[boksNummer(r,k)]);
 	    }
 	}
     }
