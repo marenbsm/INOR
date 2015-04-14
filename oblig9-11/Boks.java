@@ -1,2 +1,0 @@
-class Boks extends Beholder{
-}

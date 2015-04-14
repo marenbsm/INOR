@@ -1,2 +1,0 @@
-class Kolonne extends Beholder{
-}
