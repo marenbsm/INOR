@@ -1,2 +1,2 @@
-class Rad {
+class Rad extends Beholder{
 }

@@ -1,2 +1,2 @@
-class Kolonne {
+class Kolonne extends Beholder{
 }
