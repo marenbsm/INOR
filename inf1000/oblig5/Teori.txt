@@ -1,0 +1,16 @@
+Oppgave 5.2
+a)  Hva er innkapsling? Hvorfor er det nyttig?
+
+- Man gjemmer bort variabler og kode i klassene, slik at man ikke trenger aa forholde seg til innholdet i klassen for aa bruke den. Man unngaar aa maate sette seg inn i alt mellom, og man slipper en hel haug med variable flytende rundt i koden.
+
+b)  Hva er grensesnittet til en klasse? Hvordan skiller det seg fra implementasjonen av en klasse?
+
+- Grensesnittet til klassen er den delen av klassen man "viser" for omverdenen. Det er via grensesnittet man "bruker" klassen til det den er tiltenkt. De metodene som er eksponert og tilgjengelige for omverdenen.
+
+- Implementasjonen er detaljene, hvordan en har fatt de smaa tannhjulene inne i klassen til aa tikke rundt.
+
+c)  Hva er en instansemetode og hvordan skiller den seg fra en statisk metode (slike metoder vi har jobbet med tidligere)?
+
+- Metoder og variabler som ikke er deklarert som 'static' er kjent som 'instanse metode' eller 'instanse variabler'. For a referere til instanse metoder og variabler, maa man for lage ett objekt, siden hente metodene og variablene fra instansen.
+
+http://www.geom.uiuc.edu/~daeron/docs/javaguide/java/anatomy/static.html

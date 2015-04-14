@@ -1,0 +1,10 @@
+Ta=@(x,y) 2.*(-x-y+3);
+fxy=@(x,y) 4-x.^2-y.^2;
+r=0.5:0.02:1.5;
+s=0.5:0.02:1.5;
+[x,y]=meshgrid(r,s);
+z=fxy(x,y);
+mesh(x,y,z);
+hold on;
+z=Ta(x,y);
+mesh(x,y,z);

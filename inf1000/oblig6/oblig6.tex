@@ -1,0 +1,44 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{longtable}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{rotating}
+\usepackage{pdflscape}
+\usepackage{fancyhdr}
+
+\pagestyle{fancy}
+\fancyhead{}
+
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+
+\lstset{language=Java, 
+%basicstyle=\small
+keywordstyle=\color{javapurple}\bfseries\small,
+stringstyle=\color{javared},
+commentstyle=\color{javagreen}\ttfamily,
+morecomment=[s][\color{javadocblue}]{/**}{*/},
+numbers=left,
+numberstyle=\tiny\color{black},
+stepnumber=2,
+numbersep=10pt,
+tabsize=4,
+showspaces=false,
+showstringspaces=false
+}
+
+\begin{document}
+\fancyhead[R]{Oblig6}
+\lstinputlisting{Oblig6.java}
+\ \\
+\lstinputlisting{Ord.java}
+\ \\
+\lstinputlisting{Ordliste.java}
+\ \\
+\lstinputlisting{Ordtest.java}
+\end{document}

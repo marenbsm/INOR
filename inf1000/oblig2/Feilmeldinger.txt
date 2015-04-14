@@ -1,0 +1,47 @@
+Oppgave 2.4
+a)
+Kjorefeil, programmet tryner under kjoring, kan skyldes feil eller mangler i koden.
+
+Kompileringsfeil, kompilereren ( javac ) oppdager en feil i koden under kompilering, avbryter og gir en forhaapentligvis hjelpsom feilmelding.
+
+b) 
+Class Feilmeldinger{
+      public static void main(String[] args) {
+      	     system.out.println("Velkommen til feilmeldinger!")
+	     }
+}
+
+
+gir feilmelding
+
+$ javac Feilmeldinger.java
+Feilmeldinger.java:1: error: class, interface, or enum expected
+Class Feilmeldinger{
+^
+Feilmeldinger.java:2: error: class, interface, or enum expected
+public static void main(String[] args) {
+^
+2 errors
+
+1: stor forbokstav i Class er ikke riktig, endre til liten.
+Class Feilmeldinger{ -> class Feilmeldinger{
+
+2. Feilmelding nummer to er en "folgefeil". Kompileren kommer ut av sporet etter forste feil, saa alt etter blir bare rart.
+
+3. Ny feil
+
+$ javac Feilmeldinger.java
+Feilmeldinger.java:3: error: ’;’ expected
+system.out.println("Velkommen til feilmeldinger!")
+
+Her har vi glemt å avslutte kodelinjen med ;
+
+
+4. Siste feilmelding:
+
+$ javac Feilmeldinger.java
+Feilmeldinger.java:3: error: package system does not exist
+system.out.println("Velkommen til feilmeldinger!");
+
+Det skal være stor forbokstav i "system". Riktig kode blir
+System.out.println("Velkommen til feilmeldinger!");

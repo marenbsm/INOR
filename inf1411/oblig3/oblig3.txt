@@ -1,0 +1,75 @@
+1a)
+krets a :
+lavpassfilter
+Man finner knekkpunktet ved å ta toppen av kruven(20db) og trekke av 3db, da finner man knekkpynktet. Ved bruk av cursoren finner vi hz.
+knekkpunkt på 158.779Hz
+Man finner stigngstallet for asymptoten ved hjelp av 2 cursorer. Vi setter de på hver sin dekade, over eller under knekkpunktet, ettersom vi skulle finne over og under. Leser av forskjell mellom de 2 cursorene.
+stigningstallet for asymptoten:
+- under knekkpunktet er 19,88 dB/dekade
+- over knekkpunktet er 16.8 mdB/dekade
+
+krets b:
+Høypassfilter
+knekkpunkt er 159.532Hz
+stigningstallet for asymptoten:
+- under knekkpunktet er 18,57 dB/dekade
+- over knekkpunktet er 106 mdB/dekade
+
+krets c:
+Høypassfilter
+knekkpunkt er 15,878 Hz
+stigninstallet for asymptoten:
+- under knekkpunktet er 1,42 dB/dekade 
+- over knekkpunktet er 19,89 dB/dekade
+
+krets d:
+lavpassfilter
+knekkpunkt er 1.588 MHz
+stigninstallet for asymptoten:
+- under knekkpunktet er 19,9 dB/dekade
+- over knekkpunktet er 170,17 udB/dekade
+
+
+1b)
+/algebra gir, Fc = 1/2piRC = R/2piL
+C = L/R^2
+
+
+Krets a og d har samme knekkpunkt ved 1 nC.
+
+Krets b og c har samme knekkpunkt ved 1 nC.
+
+1c)
+plot lagret
+
+1d)
+Kurven vi ser er opp og utladningskurven til en kondensator. Hoppet i starten er når strømkilden går fra 0 til 1, spenningen på v0 dropper mot 0 ettersom kondensatoren lades opp på den positive sinusbølgen, droppet ved 1 mikrosek kommer når vi har en fullladet kondensator og AC kilden blir negativ. Ettersom kondesatoren lades ut, blir spenningsforskjellen i v0 mer og mer lik 0.
+
+2a)
+
+Den lengste ledningen kan være 46.9788. Vi brukte LTspice DC analyse og kjørte en param på spolen og motstanden. (.step)
+
+2b)
+
+Fant topppunkt(mest variasjon/på en spike) 208.71V/mA på 53,0039MHz.
+
+
+2c)
+
+Cd = ca. 300nF
+peaker rett under 50mV på 433.509KHz
+
+brukte step AC analyze for å finne tallet.
+Se plot.
+
+2d) Vpp 1.20v altså 60mV i hver retning. 
+plot og skjematikk lagt ved.
+
+2e)
+Fant toppunkt(mest variasjon/på en spike) 994,31V på 918,333Mhz
+For å dempe spiken og få flyttet den vekk fra frekvensen IC skal brukes på, kan man. Øke verdien til spolen inne på den integrerte kretsen og verdien til kondensatoren. Dette vil flytte spiken og dempe den betraktelig. Øker man begge verdiene samtidig vil det ikke bli noen demping på spiken, den vil ha samme verdi. Det er en dårlig ide å øke verdien til motstanden inne på ICen, da trenger man en stor motstand og det er ikke sikkert at man vil få noe som helst igjennom. 
+
+Det absolutt beste er derimot å få Lb og Rb verdiene så lave som mulig. Da dempes spiken og flyttes oppover frekvensbåndet. Og sannsynligheten for at kretsen utsettes for forstyrrelses som kan ødelegge den minsker. Så, kortere bondetråd.
+
+2f)
+Jo lengre ledning, jo lengre ned i frekvensbåndet får vi den minste spiken, men den forplanter seg over hele frekvensbåndet. Så skal vi ha en lengre ledning bør vi ha en større kondensator på Cd.
