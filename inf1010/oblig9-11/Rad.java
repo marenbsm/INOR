@@ -1,2 +1,0 @@
-class Rad extends Beholder{
-}
