@@ -1,0 +1,62 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{multicol}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\newcommand{\bpm}{\begin{pmatrix}}
+\newcommand{\epm}{\end{pmatrix}}
+\title{MAT1110 Oblig2}
+\author{Erik Øystein Gåserud}
+\date{\today}
+
+\begin{document}
+
+	\maketitle
+	\section*{Oppgave 1}
+	\subsection*{a)}
+	Av oppgaven har vi fått opplyst:
+	\begin{multicols}{3} \noindent
+		\begin{align*}
+		A = \bpm 4 & 6 \\ 6 & -1 \epm
+		\end{align*}
+		\begin{align*}
+			\vec{v}_{1} = \bpm 3 \\ 2 \epm
+		\end{align*}
+		\begin{align*}
+			\vec{v}_{2} = \bpm 2 \\ -3 \epm
+		\end{align*}
+	\end{multicols}
+	Vi ganger ut $A\vec{v}_{1}$ og $A\vec{v}_{2}$:
+	\begin{multicols}{2} \noindent
+		\begin{align*}
+			A\vec{v}_{1} = \bpm 24 \\ 16 \epm = A\lambda_{1}
+		\end{align*}
+		\begin{align*}
+			A\vec{v}_{2} = \bpm -10 \\ 15 \epm = A\lambda_{2}\\
+		\end{align*}
+	\end{multicols}
+		som gir ligningene for egenverdiene $\lambda_{1}$ og $\lambda_{2}$:
+	\begin{multicols}{2} \noindent
+		\begin{align*}
+			3\lambda_{1} = 24&\wedge2\lambda_{1} = 16 \\
+			&\Downarrow \\
+			\lambda_{1} &= 8 \\
+		\end{align*}
+		\begin{align*}
+			3\lambda_{2} = -10&\wedge2\lambda_{2} = 15 \\
+			&\Downarrow \\
+			\lambda_{2} &= -5\\
+		\end{align*}
+	\end{multicols}
+%	\newpage
+	\subsection*{b)}
+	Dersom $\vec{v}$ er en egenvektor for en $n\,x\,n$ matrise $A$ med en egenverdi $\lambda$, så er også enhver parallell vektor, $c\vec{v} \, der \, c\not=0$, en egenvektor med egenverdi $\lambda$ siden :
+	\begin{align*}
+	A(c\vec{v}) = c(A\vec{v}) = c(\lambda\vec{v}) = \lambda(c\vec{v})
+	\end{align*}
+
+
+\end{document}
