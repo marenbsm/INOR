@@ -2,12 +2,14 @@
 \usepackage[utf8]{inputenc}
 \usepackage{listings}
 \usepackage{amsmath}
+\usepackage{mathtools}
 \usepackage{tikz}
 \usepackage{amssymb}
 \usepackage{multicol}
+\usepackage{float}
 \renewcommand{\vec}[1]{\mathbf{#1}}
-\newcommand{\bpm}{\begin{pmatrix}}
-\newcommand{\epm}{\end{pmatrix}}
+\newcommand{\bpm}{\begin{pmatrix*}[r]}
+\newcommand{\epm}{\end{pmatrix*}}
 \title{MAT1110 Oblig2}
 \author{Erik Øystein Gåserud}
 \date{\today}
@@ -17,10 +19,10 @@
 	\maketitle
 	\section*{Oppgave 1}
 	\subsection*{a)}
-	Av oppgaven har vi fått opplyst:
+	Av oppgaven har vi fått opplyst at:
 	\begin{multicols}{3} \noindent
 		\begin{align*}
-		A = \bpm 4 & 6 \\ 6 & -1 \epm
+			A = \bpm 4 & 6 \\ 6 & -1 \epm
 		\end{align*}
 		\begin{align*}
 			\vec{v}_{1} = \bpm 3 \\ 2 \epm
@@ -51,12 +53,39 @@
 			\lambda_{2} &= -5\\
 		\end{align*}
 	\end{multicols}
-%	\newpage
 	\subsection*{b)}
-	Dersom $\vec{v}$ er en egenvektor for en $n\,x\,n$ matrise $A$ med en egenverdi $\lambda$, så er også enhver parallell vektor, $c\vec{v} \, der \, c\not=0$, en egenvektor med egenverdi $\lambda$ siden :
+		Dersom $\vec{v}$ er en egenvektor for en $n\,\times\,n$ matrise $A$ med en egenverdi $\lambda$, så er også enhver parallell vektor, $c\vec{v} \, der \, c\not=0$, en egenvektor med egenverdi $\lambda$ siden :
 	\begin{align*}
 	A(c\vec{v}) = c(A\vec{v}) = c(\lambda\vec{v}) = \lambda(c\vec{v})
 	\end{align*}
-
-
+	\subsection*{c)}
+		\begin{figure}[H]
+			\lstinputlisting[language=matlab, frame=single]{oppg1c.m}
+			\lstinputlisting[language=matlab, frame=single]{oppg1c.out}
+		\end{figure}
+		Ikke overraskende gir matlab oss sammme $\lambda$ verdier som vi kom frem til for hånd i oppgave 1a. Egenvektorene er derimot forskjellige, men de er parallelle med de vi fant for hånd, og de gjør da samme nytten.
+	\subsection*{d)}
+		\begin{figure}[H]
+			\lstinputlisting[language=matlab, frame=single]{oppg1d.m}
+			\lstinputlisting[language=matlab, frame=single]{oppg1d.out}
+		\end{figure}
+		Siden $A$ kan radreduseres til $I_{3}$ vet vi at søylevektorene i $U$ utgjør en basis for $\mathbb{R}^3$.
+	\subsection*{e)}
+		\begin{figure}[	H]
+			\lstinputlisting[language=matlab, frame=single]{oppg1e.m}
+			\lstinputlisting[language=matlab, frame=single]{oppg1e.out}
+		\end{figure}
+		Siden $A$ kan radreduseres til $I_{3}$ vet vi at søylevektorene i $U$ utgjør en basis for $\mathbb{R}^3$.
+	\subsection*{f)}
+		\begin{figure}[H]
+			\lstinputlisting[language=matlab, frame=single]{oppg1f.m}
+			\lstinputlisting[language=matlab, frame=single]{oppg1f.out}
+		\end{figure}
+		Siden $A$ ikke kan radreduseres til $I_{4}$ vet vi at søylevektorene i $U$ ikke utgjør en basis for $\mathbb{R}^4$.
+	\subsection*{g)}
+		\begin{figure}[H]
+			\lstinputlisting[language=matlab, frame=single]{oppg1g.m}
+			\lstinputlisting[language=matlab, frame=single]{oppg1g.out}
+		\end{figure}
+		Siden $A$ ikke kan radreduseres til $I_{4}$ vet vi at søylevektorene i $U$ ikke utgjør en basis for $\mathbb{R}^4$. Heldigvis gir matlab oss samme konklusjon når utgangspunktet, $A$, er likt.
 \end{document}
