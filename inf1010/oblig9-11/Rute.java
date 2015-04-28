@@ -4,9 +4,25 @@ class Rute {
 	private Beholder kolonne;
 	private Beholder rad;
 	private boolean laast = true;
+	private Rute neste;
 
-	Rute(char c){
+	Rute(char c) {
 		setVerdi(c);
+	}
+
+/* kanskje ha metoden til å returnere brett istedet?
+Hvordan ta vare på alle svarene? Array?
+Hva med låste verdier?*/
+
+
+	public boolean fyllUtDenneRuteOgResten() {
+		int[] muligeTall = this.finnAlleMuligeTall();
+		for (int i = 0; i < muligeTall.length ; i++) {
+			if (muligeTall[i] != 0) this.setVerdi(muligeTall[i]);
+			if (neste != null) neste.fyllUtDenneRuteOgResten();
+			if (neste == null) return true;
+			return false;
+		}
 	}
 
 	public int[] finnAlleMuligeTall() {
@@ -18,6 +34,18 @@ class Rute {
 			return rad.muligeTall(kolonne.muligeTall(boks.muligeTall(tall)));
 		}
 		return new int[]{this.verdi};
+	}
+
+	public void setNeste(Rute r) {
+		this.neste = r;
+	}
+
+	public Rute getNeste(){
+		return this.neste;
+	}
+
+	private void setVerdi(int i){
+		this.verdi = i;
 	}
 
 	public void setVerdi(char c) {
