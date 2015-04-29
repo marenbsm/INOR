@@ -41,3 +41,7 @@ tags
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# MATLAB stuff #
+################
+#*.aux

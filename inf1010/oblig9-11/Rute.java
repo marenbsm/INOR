@@ -5,28 +5,30 @@ class Rute {
 	private Beholder rad;
 	private boolean laast = true;
 	private Rute neste;
+	private Brett brett;
 
 	Rute(char c) {
 		setVerdi(c);
 	}
 
-/* kanskje ha metoden til å returnere brett istedet?
-Hvordan ta vare på alle svarene? Array?
-Hva med låste verdier?*/
-
-
-	public boolean fyllUtDenneRuteOgResten() {
+	public void fyllUtDenneRuteOgResten() {
 		int[] muligeTall = this.finnAlleMuligeTall();
-		for (int i = 0; i < muligeTall.length ; i++) {
-			if (muligeTall[i] != 0) this.setVerdi(muligeTall[i]);
-			if (neste != null) neste.fyllUtDenneRuteOgResten();
-			if (neste == null) return true;
-			return false;
+		if (neste != null) {
+			for (int i = 0; i < muligeTall.length ; i++) {
+				if (muligeTall[i] != 0) {
+					this.setVerdi(muligeTall[i]);
+					neste.fyllUtDenneRuteOgResten();
+				}
+			}
+		}
+		else {
+			System.out.println("solved");
+			this.brett.skrivUt();
 		}
 	}
 
 	public int[] finnAlleMuligeTall() {
-		if (this.verdi == 0 && !this.laast){
+		if (!this.laast){
 			int[] tall = new int[boks.size()];
 			for (int i = 0; i < tall.length; i++) {
 				tall[i] = i+1;
@@ -36,15 +38,27 @@ Hva med låste verdier?*/
 		return new int[]{this.verdi};
 	}
 
+	public void setBrett(Brett b) {
+		this.brett = b;
+	}
+
 	public void setNeste(Rute r) {
 		this.neste = r;
 	}
 
-	public Rute getNeste(){
-		return this.neste;
-	}
-
-	private void setVerdi(int i){
+	private void setVerdi(int i) {
+		if (this.boks!=null) {
+			this.boks.fjernVerdi(this.verdi);
+			this.boks.setVerdi(i);
+		}
+		if (this.rad!=null) {
+			this.rad.fjernVerdi(this.verdi);
+			this.rad.setVerdi(i);
+		}
+		if (this.kolonne!=null) {
+			this.kolonne.fjernVerdi(this.verdi);
+			this.kolonne.setVerdi(i);
+		}
 		this.verdi = i;
 	}
 
@@ -53,12 +67,12 @@ Hva med låste verdier?*/
 			this.verdi = 0;
 			this.laast = false;
 		}
-		else if (c < ':') this.verdi = (int)c-'0'; // ':' folger '9'i ascii tabellen
-		else this.verdi = (int)( c-'A'+10);
-	}
+			else if (c < ':') this.verdi = (int)c-'0'; // ':' folger '9'i ascii tabellen
+			else this.verdi = (int)( c-'A'+10);
+		}
 
-	public char getCharVerdi() {
-		if (this.verdi == 0) return '.';
+		public char getCharVerdi() {
+			if (this.verdi == 0) return '.';
 		else if (this.verdi < 10) return (char)(this.verdi+'0'); // 48 = '0'
 		else return (char)(this.verdi-10+'A');
 	}
@@ -69,6 +83,7 @@ Hva med låste verdier?*/
 
 	public boolean setBoks(Beholder b) {
 		this.boks = b;
+		this.setVerdi(this.verdi);
 		if (this.verdi != 0) b.setVerdi(this.verdi);
 		return (this.boks == b);
 	}
@@ -79,6 +94,7 @@ Hva med låste verdier?*/
 
 	public boolean setKolonne(Beholder k) {
 		this.kolonne = k;
+		this.setVerdi(this.verdi);
 		if (this.verdi != 0) k.setVerdi(this.verdi);
 		return (this.kolonne == k);
 	}
@@ -89,6 +105,7 @@ Hva med låste verdier?*/
 
 	public boolean setRad(Beholder r) {
 		this.rad = r;
+		this.setVerdi(this.verdi);
 		if (this.verdi != 0) r.setVerdi(this.verdi);
 		return (this.rad == r);
 	}

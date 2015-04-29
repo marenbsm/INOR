@@ -6,8 +6,12 @@ class Beholder {
 	}
 
 	public void setVerdi (int verdi) {
-		this.tall[verdi-1] = verdi;
+		if (verdi>0) this.tall[verdi-1] = verdi;
 	}
+
+	public void fjernVerdi(int verdi) {
+		if (verdi>0) this.tall[verdi-1] = 0;
+	} 
 /*
 	public boolean sjekkVerdi(int verdi) {
 		return (this.tall[verdi-1] != verdi);
