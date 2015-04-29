@@ -1,10 +1,11 @@
 function [] = oppg2e()
 N = 1000;
 x = linspace(-2.*pi ,2.*pi , N);
+y = x;
 fx = f(x, N);
 gx = f(fx, N);
-plot(x, fx, x, gx)
-legend('f(x) = 2.5sin(x)','g(x) = f(f(x))')
+plot(x, y, x, gx)
+legend('x = y','g(x) = f(f(x))')
 title('oppgave 2e')
 xlabel('-2\pi \leq x \leq 2\pi')
 end
