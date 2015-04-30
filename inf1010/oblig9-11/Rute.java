@@ -1,4 +1,5 @@
 class Rute {
+	private static int solutioncount;
 	private int verdi;
 	private Beholder boks;
 	private Beholder kolonne;
@@ -13,18 +14,17 @@ class Rute {
 
 	public void fyllUtDenneRuteOgResten() {
 		int[] muligeTall = this.finnAlleMuligeTall();
-		if (neste != null) {
-			for (int i = 0; i < muligeTall.length ; i++) {
-				if (muligeTall[i] != 0) {
-					this.setVerdi(muligeTall[i]);
-					neste.fyllUtDenneRuteOgResten();
-				}
+		for (int i = 0; i < muligeTall.length ; i++) {
+			if (muligeTall[i] != 0) {
+				this.setVerdi(muligeTall[i]);
+				if (neste != null) neste.fyllUtDenneRuteOgResten();
 			}
 		}
-		else {
-			System.out.println("solved");
+		if (neste==null) {
+			System.out.println("Løsning #"+(++solutioncount));
 			this.brett.skrivUt();
 		}
+		this.setVerdi(0);
 	}
 
 	public int[] finnAlleMuligeTall() {
@@ -47,19 +47,21 @@ class Rute {
 	}
 
 	private void setVerdi(int i) {
-		if (this.boks!=null) {
-			this.boks.fjernVerdi(this.verdi);
-			this.boks.setVerdi(i);
+		if (!laast){
+			if (this.boks!=null) {
+				this.boks.fjernVerdi(this.verdi);
+				this.boks.setVerdi(i);
+			}
+			if (this.rad!=null) {
+				this.rad.fjernVerdi(this.verdi);
+				this.rad.setVerdi(i);
+			}
+			if (this.kolonne!=null) {
+				this.kolonne.fjernVerdi(this.verdi);
+				this.kolonne.setVerdi(i);
+			}
+			this.verdi = i;
 		}
-		if (this.rad!=null) {
-			this.rad.fjernVerdi(this.verdi);
-			this.rad.setVerdi(i);
-		}
-		if (this.kolonne!=null) {
-			this.kolonne.fjernVerdi(this.verdi);
-			this.kolonne.setVerdi(i);
-		}
-		this.verdi = i;
 	}
 
 	public void setVerdi(char c) {

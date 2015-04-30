@@ -10,15 +10,11 @@ class Oblig10 {
 	}
 
 	public static void main (String[] args) {
-		Oblig10 sodoku = new Oblig10(args[0]);
-		if (sodoku.tom() ) return;
-		sodoku.spillebrett.skrivUt();
-		sodoku.spillebrett.solve();
-		/*
-		for (int i : sodoku.spillebrett.finnAlleMuligeTall(2,1)) {
-			System.out.print(i+" ");
-		}
-		*/
+		Oblig10 sudoku = new Oblig10(args[0]);
+		if (sudoku.tom() ) return;
+		//sudoku.spillebrett.skrivUt();
+		sudoku.spillebrett.solve();
+		//sudoku.spillebrett.skrivUt();
 	}
 
 	private Brett lesFil(String s) {

@@ -76,13 +76,14 @@ class Brett {
 		Rute forrigeRute = null;
 		for (int r = 0; r < this.dimensjon(); r++) {
 			for (int k = 0; k < this.dimensjon(); k++) {
-				this.brett[r][k].setBrett(this);
-				if (forrigeRute==null) { //cornercase
+				this.brett[r][k].setBrett(this); // forteller ruten hvilket brett den tilhører.
+				if (forrigeRute==null) { //cornercase for første rute.
 					forrigeRute = this.brett[r][k];
 					k+=1;
 				}
 				forrigeRute.setNeste(this.brett[r][k]);
 				forrigeRute = this.brett[r][k];
+
 			}
 		}
 	}
