@@ -1,29 +1,74 @@
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+
 class Brett {
 	private Rute[][] brett; // [rad] [kolonne]
 	private int raderIBoks;
 	private int kolonnerIBoks;
+	private SudokuBeholder losningsBeholder;
 
 	Brett (Rute [][] r, int raderIBoks, int kolonnerIBoks) {
 		this.brett = r;
 		this.raderIBoks = raderIBoks;
 		this.kolonnerIBoks = kolonnerIBoks;
+		losningsBeholder = new SudokuBeholder(2500);
 		this.delInnRuter();
 	}
-	public void skrivUt(){
-		for (int r = 0; r < this.brett.length; r++) {
-			for (int k = 0; k < this.brett[r].length; k++) {
-			//	String farge = this.brett[r][k].getLaast() ? "\u001b[31m" : "\u001b[0m";
-		// ANSI
-		// 001b[31m = rødt, 001b[0m = hvit
-			//	System.out.print(farge+this.brett[r][k].toString()+"\u001b[0m ");
-				System.out.print(this.brett[r][k].toString()+" ");
+
+	Brett (Brett b) {
+		this.raderIBoks = b.getRaderIBoks();
+		this.kolonnerIBoks = b.getKolonnerIBoks();
+		Rute[][] nyttBrett = new Rute[this.raderIBoks*this.kolonnerIBoks][this.raderIBoks*this.kolonnerIBoks]; 
+		for (int r = 0; r < nyttBrett.length; r++) {
+			for (int k = 0; k < nyttBrett[r].length; k++) {
+				nyttBrett[r][k] = new Rute(b.getRuteVedPosisjon(r,k).getCharVerdi());
 			}
-			System.out.println("");
 		}
-		System.out.println("");
+		this.brett = nyttBrett;
 	}
 
-	public void solve(){
+	Brett (String s) {
+		fyllBrettFraFil(s);
+		losningsBeholder = new SudokuBeholder(2500);
+		this.delInnRuter();
+	}
+
+	public void lagre() {
+		this.losningsBeholder.settInn(getCopy());
+	}
+
+	public String toString() {
+		// 1: 421563//653214//134625//265431//512346//346152//
+		String losninger = "";
+		for (int r = 0; r < this.brett.length; r++) {
+			for (int k = 0; k < this.brett[r].length; k++) {
+				losninger += (this.brett[r][k].toString());
+			}
+			losninger += "//";
+		}
+		losninger += "\n";
+		return losninger;
+	}
+
+	public void skrivUt(){
+		losningsBeholder.skrivUt();
+	}
+
+	public void skrivTilFil(String filnavn){
+		losningsBeholder.skrivTilFil(filnavn);
+	}
+
+	public Rute getRuteVedPosisjon (int rad, int kolonne){
+		return this.brett[rad][kolonne];
+	}
+
+	public Brett getCopy() {
+		Brett b = new Brett (this);
+		return b;
+	}
+
+	public void solve() {
 		this.brett[0][0].fyllUtDenneRuteOgResten();
 	}
 	public int dimensjon() {
@@ -85,6 +130,29 @@ class Brett {
 				forrigeRute = this.brett[r][k];
 
 			}
+		}
+	}
+
+	private void fyllBrettFraFil(String s) {
+		Scanner sc = null;
+		try{
+			sc = new Scanner(new File (s) );
+		}
+		catch (FileNotFoundException e) {
+			System.out.println("Fil ikke funnet, stacktrace:");
+			e.printStackTrace();
+			System.exit(1);
+		}
+		raderIBoks = Integer.parseInt(sc.nextLine());
+		kolonnerIBoks = Integer.parseInt(sc.nextLine());
+		brett = new Rute[raderIBoks*kolonnerIBoks][raderIBoks*kolonnerIBoks];
+		int r = 0;
+		while(sc.hasNextLine()) {
+			char[] linje = sc.nextLine().toCharArray();
+			for (int k = 0; k < linje.length; k++) {
+				brett[r][k] = new Rute(linje[k]);
+			}
+			r++;
 		}
 	}
 }

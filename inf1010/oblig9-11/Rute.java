@@ -1,5 +1,4 @@
 class Rute {
-	private static int solutioncount;
 	private int verdi;
 	private Beholder boks;
 	private Beholder kolonne;
@@ -21,13 +20,12 @@ class Rute {
 			}
 		}
 		if (neste==null) {
-			System.out.println("Løsning #"+(++solutioncount));
-			this.brett.skrivUt();
+			this.brett.lagre();
 		}
 		this.setVerdi(0);
 	}
 
-	public int[] finnAlleMuligeTall() {
+	public int[] finnAlleMuligeTall() { // kunne brukt collection, men for mye tekst.
 		if (!this.laast){
 			int[] tall = new int[boks.size()];
 			for (int i = 0; i < tall.length; i++) {
@@ -42,7 +40,7 @@ class Rute {
 		this.brett = b;
 	}
 
-	public void setNeste(Rute r) {
+	public void setNeste(Rute r) {	
 		this.neste = r;
 	}
 
