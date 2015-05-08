@@ -1,0 +1,167 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{graphicx}
+\title{INF1411 Lab6}
+\author{Erik Øystein Gåserud \\
+\texttt erikoga@uio.no}
+\date{\today}
+\begin{document}
+\maketitle
+
+\section*{Oppgave 1}
+
+\subsection*{a)}
+
+Vi erstatter $R_{1}, R_{2}, R_{3}$ med én motstand, $R_{tot}$. \\
+\begin{align*}
+R_{tot} = \frac{R_{2}R_{3}}{R_{2}+R_{3}} + R_{1} =& \frac{150M\Omega^2}{25k\Omega}+ 5k\Omega = 11k\Omega
+\end{align*}
+
+\subsection*{b)}
+
+\begin{align*}
+V_{RMS} =& 1+2sin(t)\cdot0,707
+\end{align*}
+Vi har $-1 \leq sin(t) \leq 1$. Vi setter inn max for $sin(t)$ og får
+\begin{align*}
+V_{RMS} =& 1+2*\cdot0,707
+\end{align*}
+fra Ohms-lov $V=RI$ får vi da
+\begin{align*}
+I_{RMS} = \frac{V_{RMS}}{R_{tot}} =& \frac{2,414V}{11k\Omega} = 0,22mA
+\end{align*}
+
+\subsection*{c)}
+
+\begin{align*}
+-1V \leq V_{in} \leq 3V
+\end{align*}
+Den største og minste øyeblikksverdien for $V_{out}$ blir da gitt ved
+\begin{align*}
+\frac{R_{1}}{R_{tot}}V_{in-} \leq &V_{out} \leq \frac{R_{1}}{R_{tot}}V_{in+} \\
+-\frac{5k\Omega}{11k\Omega}1V \leq &V_{out} \leq \frac{5k\Omega}{11k\Omega}3V \\
+-0.45V \leq &V_{out} \leq 1.36V
+\end{align*}
+
+\subsection*{d)}
+
+\begin{multicols}{3}
+\noindent
+\begin{align*}
+V_{out} = \frac {X_{c}} {R_{tot}-R_{1}+X_{c}}V_{in}
+\end{align*}
+\begin{align*}
+A = \frac {V_{out}} {V_{in}}
+\end{align*}
+\begin{align*}
+R_{tot} = \frac{R_{2}R_{3}}{R_{2}+R_{3}} + R_{1}
+\end{align*}
+\end{multicols}
+\begin{align*}
+A = \frac{\frac{X_{c}}{R_{tot}-R_{1}+X_{c}}V_{in}}{V_{in}} = \frac{X_{c}}{R_{tot}-R_{1}+X_{c}} = \frac{X_{c}}{\frac{R_{2}R_{3}}{R_{2}+R_{3}}+X_{c}}
+\end{align*}
+
+\subsection*{e)}
+
+Fra tidligere vet vi at
+\begin{multicols}{2}\noindent
+\begin{align*}
+A = \frac{X_{c}}{\frac{R_{2}R_{3}}{R_{2}+R_{3}}+X_{c}}
+\end{align*}
+\begin{align*}
+X_{c} = \frac{1}{2\pi fC}
+\end{align*}
+\end{multicols}
+Vi setter $f = 0 \wedge \infty$ og får.
+\begin{multicols}{2}\noindent
+\begin{align*}
+X_{c}\lim_{f \to 0} &= \infty \\
+A\lim_{f \to 0} &= 1
+\end{align*}
+\begin{align*}
+X_{c}\lim_{f \to \infty} &= 0 \\
+A\lim_{f \to \infty} &= 0
+\end{align*}
+\end{multicols}
+
+\section*{Oppgave 2}
+
+\subsection*{a)}
+
+Leser fra figur at $V_{R} = -60$V gir $I_{R} = 5$nA, $V_{F} = 0.5$V gir $I_{F} = 500\mu$A og $V_{F} = 0.8$V gir $I_{F} = 6.5$mA slik at ved bruk av Ohms lov $V = RI$ lov får vi
+\begin{multicols}{3}\noindent
+\begin{align*}
+R_{R} &= \frac{-60V}{5nA} \\
+R_{R} &= 12G\Omega
+\end{align*}
+\begin{align*}
+R_{F} &= \frac{0.5V}{500\mu A} \\
+R_{F} &= 1k\Omega
+\end{align*}
+\begin{align*}
+R_{F} &= \frac{0.8V}{6.5mA} \\
+R_{F} &= 123\Omega
+\end{align*}
+\end{multicols}
+
+\subsection*{b)}
+
+$V_{in} = V_{ac} + V_{dc}$ gir $0V \leq V_{in} \leq 2V$ slik at strømmen gjennom $R$ blir gitt ved
+\begin{align*}
+I_{max} &= \frac{1.3}{10k\Omega} && I_{min} &= \frac{0V}{10k\Omega} \\
+I_{max} &= 130mA && I_{min} &= 0A
+\end{align*}
+Spenningsfallet over $R$ for $I_{min}$ blir $0$V fordi $V_{ac}$ ikke greier å trenge gjennom diodens barriere spenning på $0.7$V.
+
+\subsection*{c)}
+
+\begin {table}[H]
+\centering
+\begin{tabular}{ l  c | r }
+$V_{a}$ & $V_{b}$ & $V_{out}$ \\
+\hline
+0 & 0 & 1 \\
+0 & 1 & 1 \\
+1 & 0 & 1 \\
+1 & 1 & 0 \\
+\end{tabular}
+\caption{sannhetstabell til kretsen i figur 4}
+\end{table}
+Denne kjenner vi igjen som en NAND. For at transistoren skal slutte kretsen mellom $V_{out}$ og jord, så må spenningen over diodene være mindre enn barrierespenningene. For å oppnå dette så må både $V_{a}$ og $V_{b}$ være høye, da blir ikke spenningen trukket mot jord via $V_{a}$ og $V_{b}$, og transistoren slutter kretsen mellom $V_{out}$ og jord.
+
+\section*{Oppgave 3}
+
+\subsection*{a-1)}
+
+Figur 5 viser en inverterende summasjonsforsterker. Dette ser vi fordi
+\begin{itemize}
+\item Negativt tilbaketoblet, altså en forsterker.
+\item Legger sammen $V_{1}, V_{2}$ og $V_{3}$ til én ledning, den summerer.
+\item Inngangssignalet er koblet til den den negative inngangen, altså inverterende.
+\end{itemize}
+
+\subsection*{a-2)}
+
+\begin{align*}
+gain = A = \frac{-R_{f}}{R_{i}} = - \frac{14.1k\Omega}{\frac{4.7k\Omega}{3}} = -9
+\end{align*}
+
+\subsection*{a-3)}
+
+\begin{align*}
+A(V_1+V_2+V_3) &= V_{out} \\
+-9(1V-2V+V_3) &= -8V \\
+-1V + V_3 &= \frac{8}{9}V \\
+V_3 &= \frac{17}{9}V
+\end{align*}
+
+\subsection*{b-1)}
+
+\end{document}
